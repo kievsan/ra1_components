@@ -1,7 +1,7 @@
-// import ShopItemClass from './components/CC/ShopItemClass/ShopItemClass';
+import ShopItemClass from './components/CC/ShopItemClass/ShopItemClass';
 import ShopItemFunc from './components/FC/ShopItemFunc/ShopItemFunc';
 
-import './App.css';
+import styles from './App.module.css';
 
 
 const item = {
@@ -14,18 +14,24 @@ const item = {
 }
 
 function App() {
+  const now = new Date(2017, 2, 8);
+
   return (
-      <div className="container">
-        <div className="background-element">
+    <>
+      <div className={styles["container"]}>
+        <div className={styles["background-element"]}>
         </div>
-        <div className="highlight-window">
-          <div className='highlight-overlay'></div>
+        <div className={styles["highlight-window"]}>
+          <div className={styles["highlight-overlay"]}></div>
         </div>
-        <div className="window">
-          {/* <ShopItemClass item={item} /> */}
-          <ShopItemFunc item={item} />
+        <div className={styles["window"]}>
+          <ShopItemClass item={item} />
+          {/* <ShopItemFunc item={item} /> */}
         </div>
       </div>
+
+      {/* <Calendar date={now} /> */}
+    </>
   );
 }
 
