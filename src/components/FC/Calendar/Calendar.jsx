@@ -1,4 +1,3 @@
-import React from 'react'
 import PropTypes from 'prop-types'
 
 import moment from 'moment'
@@ -6,6 +5,7 @@ import 'moment/locale/ru';
 import { nanoid } from 'nanoid'
 
 import styles from './css/calendar.module.css'
+
 
 const Calendar = ({date}) => {
 
@@ -19,7 +19,7 @@ const Calendar = ({date}) => {
   //первая показываемая дата
   const startVisibleDay = moment(date).startOf('month').startOf('week');
 
-  //показываемые даты как, например, {date: 10, isAnotherMonth: false, isCurrent: false}
+  //показываемые даты в формате {date: 10, isAnotherMonth: false, isCurrent: false}
   let visibleDates = [];
   for (let i = 0; i < 7 * 5; i++) {
     const current = startVisibleDay.clone().add(i, 'day');
@@ -33,16 +33,19 @@ const Calendar = ({date}) => {
   return (
     <div className={styles["ui-datepicker"]}>
       <div className={styles["ui-datepicker-material-header"]}>
-        <div className="ui-datepicker-material-day">{dateName}</div>
-        <div className="ui-datepicker-material-date">
-          <div className="ui-datepicker-material-day-num">{dateNumber}</div>
-          <div className="ui-datepicker-material-month">{dateMonthDeclension}</div>
-          <div className="ui-datepicker-material-year">{dateYear}</div>
+        <div className={styles["ui-datepicker-material-day"]}>{dateName}</div>
+        <div className={styles["ui-datepicker-material-date"]}>
+          <div className={styles["ui-datepicker-material-day-num"]}>{dateNumber}</div>
+          <div className={styles["ui-datepicker-material-month"]}>{dateMonthDeclension}</div>
+          <div className={styles["ui-datepicker-material-year"]}>{dateYear}</div>
         </div>
       </div>
       <div className={styles["ui-datepicker-header"]}>
-        <div className="ui-datepicker-title">
-          <span className="ui-datepicker-month">{dateMonth}</span>&nbsp;<span className="ui-datepicker-year">{dateYear}</span>
+        <div className={styles["ui-datepicker-title"]}>
+          <span className={styles["ui-datepicker-month"]}>
+            {dateMonth}</span>
+            &nbsp;<span className={styles["ui-datepicker-year"]}>
+              {dateYear}</span>
         </div>
       </div>
       <table className={styles["ui-datepicker-calendar"]}>
@@ -52,8 +55,8 @@ const Calendar = ({date}) => {
           <col />
           <col />
           <col />
-          <col className="ui-datepicker-week-end" />
-          <col className="ui-datepicker-week-end" />
+          <col className={styles["ui-datepicker-week-end"]} />
+          <col className={styles["ui-datepicker-week-end"]} />
         </colgroup>
         <thead>
           <tr>
@@ -75,7 +78,7 @@ const Calendar = ({date}) => {
                       .map((day, i) => (
                         <td 
                           key={nanoid()} 
-                          className={day.isAnotherMonth ? 'ui-datepicker-other-month' : day.isCurrent ? 'ui-datepicker-today': null}>
+                          className={styles[day.isAnotherMonth ? 'ui-datepicker-other-month' : day.isCurrent ? 'ui-datepicker-today': null]}>
                             {day.date}
                         </td>
                       ))
