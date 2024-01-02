@@ -1,5 +1,6 @@
 import ShopItemClass from './components/CC/ShopItemClass/ShopItemClass';
 import ShopItemFunc from './components/FC/ShopItemFunc/ShopItemFunc';
+import Calendar from './components/FC/Calendar/Calendar';
 
 import styles from './App.module.css';
 
@@ -14,7 +15,7 @@ const item = {
 }
 
 function App() {
-  const now = new Date(2017, 2, 8);
+  const now = new Date(2023, 12, 30);
 
   return (
     <>
@@ -30,7 +31,7 @@ function App() {
         </div>
       </div>
 
-      {/* <Calendar date={now} /> */}
+      <Calendar date={now} />
     </>
   );
 }
